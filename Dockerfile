@@ -39,7 +39,9 @@ ENV NVCC_THREADS=4
 ENV FLASHINFER_ENABLE_AOT=1
 ENV USE_CUDA=1
 ENV CUDA_HOME=/usr/local/cuda
-ENV TORCH_CUDA_ARCH_LIST='10.0+PTX'
+# ENV TORCH_CUDA_ARCH_LIST='10.0+PTX
+ENV VLLM_FLASH_ATTN_VERSION=2
+ENV TORCH_CUDA_ARCH_LIST="12.0+PTX"
 ENV FLASH_ATTN_CUDA_ARCHS=100
 ENV CCACHE_DIR=/root/.ccache
 ENV CMAKE_BUILD_TYPE=Release
@@ -72,6 +74,12 @@ RUN python3 use_existing_torch.py && \
     pip3 install --no-cache-dir setuptools_scm && \
     pip3 install --no-build-isolation -v -e .
 
+RUN apt purge nodejs -y
+RUN apt autoremove -y
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+RUN source ~/.bashrc
+RUN nvm install --lts
+RUN nvm use --lts 
 # Install Claude Code globally
 RUN npm install -g @anthropic-ai/claude-code
 
