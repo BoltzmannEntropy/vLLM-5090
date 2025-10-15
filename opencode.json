@@ -1,0 +1,44 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "vllm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "vLLM (local)",
+      "options": {
+        "baseURL": "http://localhost:8000/v1"
+      },
+      "models": {
+        "qwen3-4b": {
+          "name": "Qwen3 4B (vLLM)",
+          "contextWindow": 32768,
+          "maxTokens": 4096
+        },
+        "qwen-0.5b": {
+          "name": "Qwen 0.5B (vLLM)",
+          "contextWindow": 32768,
+          "maxTokens": 2048
+        },
+        "qwen-14b": {
+          "name": "Qwen 14B (vLLM)",
+          "contextWindow": 32768,
+          "maxTokens": 4096
+        },
+        "gemma-4b": {
+          "name": "Gemma 4B (vLLM)",
+          "contextWindow": 8192,
+          "maxTokens": 2048
+        },
+        "gemma-9b": {
+          "name": "Gemma 9B (vLLM)",
+          "contextWindow": 8192,
+          "maxTokens": 2048
+        },
+        "deepseek-7b": {
+          "name": "DeepSeek 7B (vLLM)",
+          "contextWindow": 16384,
+          "maxTokens": 4096
+        }
+      }
+    }
+  }
+}

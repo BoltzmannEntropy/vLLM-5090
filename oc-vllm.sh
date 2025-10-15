@@ -1,0 +1,1 @@
+vllm serve Qwen/Qwen3-4B --tensor-parallel-size 1 --gpu-memory-utilization 0.8 --max-model-len 20000 --enable-auto-tool-choice --tool-call-parser hermes --trust-remote-code

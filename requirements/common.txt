@@ -1,0 +1,37 @@
+aiofile
+aiofiles
+aiohttp
+awscrt
+cufile-python
+fastapi
+httpx
+msgspec
+# if nixl decides to support >=3.13 in the future, we can remove this constraint
+nixl; python_version < "3.13"
+# nixl uses numba which requires numpy<=2.2
+numpy<=2.2
+nvtx
+prometheus_client >= 0.18.0
+psutil
+py-cpuinfo
+pyyaml
+pyzmq >= 25.0.0
+redis
+safetensors
+setuptools>=77.0.3,<81.0.0
+setuptools_scm>=8
+sortedcontainers
+# 1. avoid pinning torch version in the runtime dependencies so that 
+# installing lmcache (from source or from pypi) will not override
+# the user's preexisting torch version 
+# 2. this keeps lmcache torch version flexible for many serving engines
+# and versions of those serving engines
+# if NO pre-existing torch version is installed, `pip install lmcache` or 
+# `pip install -e . --no-build-isolation` will install the latest torch version
+# 3. the extra benefit of not pinning is so that when vllm releases their docker
+# image (which has lmcache as a dependency), we will never forcefully collide with
+# whatever torch version that they have
+# 4. this torch version may also be overridden inside of LMCache/docker/Dockerfile
+torch
+transformers >= 4.51.1
+uvicorn

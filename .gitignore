@@ -1,0 +1,80 @@
+# ---- OS-specific ----
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# ---- Editors / IDEs ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+__pypackages__/
+
+# Packaging / build artifacts
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Test / coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.pytype/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+.jupyter/
+jupyterlab/staging/
+
+# Logs
+*.log
+logs/
+nohup.out
+
+# C/C++ / CUDA build outputs
+*.o
+*.obj
+*.a
+*.lo
+*.la
+*.dll
+*.dylib
+*.out
+*.exp
+*.lib
+
+# Misc caches
+.cache/
+
+# Environment files
+.env
+.env.*
+kaggle
+scripts
+
+
