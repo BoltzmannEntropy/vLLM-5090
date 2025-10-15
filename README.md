@@ -55,6 +55,26 @@ The unique feature of this setup is **OpenCode running inside the same Docker co
   <br>
 </div>
 
+# Fast Track 
+
+```bash
+# Windows
+.\build.bat
+# Linux/Mac
+docker build -t lmcache-vllm:latest --target image-build -f docker/Dockerfile .
+```
+# Windows
+.\run-d.bat
+```bash
+bash /workspace/oc-vllm.sh
+```
+**Start coding with AI:**
+```bash
+opencode  --model vllm/qwen3-4b
+opencode -m vllm/qwen3-4b
+```
+
+
 ## 🚀 What This Solves
 
 Running large language models on cutting-edge GPUs like the RTX 5090 in WSL2 can be challenging due to dependency management and environment conflicts. This project provides a ready-to-use Docker container that:
@@ -85,10 +105,6 @@ Running large language models on cutting-edge GPUs like the RTX 5090 in WSL2 can
 - **Deep Learning**: torch, transformers, xformers
 - **Utilities**: jupyter, jupyterlab, gradio, matplotlib, seaborn
 
-### Scripts
-- **Unified Training**: `scripts/train.py` - Works with all models (Qwen, Gemma, DeepSeek, DeBERTa)
-- **Unified Inference**: `scripts/infer.py` - Multi-GPU support, auto-configuration
-- **Legacy Scripts**: `scripts/legacy/` - Archived model-specific scripts
 
 <div align="center">
   <img src="assets/01.png" alt="Performance" width="600"/>
@@ -133,6 +149,7 @@ Running large language models on cutting-edge GPUs like the RTX 5090 in WSL2 can
 
 # Linux/Mac
 docker build -t lmcache-vllm:latest --target image-build -f docker/Dockerfile .
+
 ```
 
 **Build time**: ~15-20 minutes
@@ -189,18 +206,11 @@ curl http://localhost:8000/v1/models
 
 ### 4. Use OpenCode with Your Local vLLM
 
-**First-time authentication:**
-```bash
-opencode auth login
-# Select: "Other"
-# Provider ID: vllm
-# API key: dummy (or any value)
-```
-
 **Start coding with AI:**
 ```bash
-opencode --provider vllm --model qwen3-4b
+opencode  --model vllm/qwen3-4b
 ```
+
 
 That's it! OpenCode now uses your local vLLM for AI assistance. **No cloud, no costs, complete privacy!**
 
