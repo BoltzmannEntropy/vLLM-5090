@@ -8,33 +8,33 @@
         "baseURL": "http://localhost:8000/v1"
       },
       "models": {
-        "qwen3-4b": {
+        "Qwen/Qwen3-4B": {
           "name": "Qwen3 4B (vLLM)",
-          "contextWindow": 32768,
-          "maxTokens": 4096
+          "contextWindow": 20000,
+          "maxTokens": 8000
         },
-        "qwen-0.5b": {
+        "Qwen/Qwen2.5-0.5B-Instruct": {
           "name": "Qwen 0.5B (vLLM)",
           "contextWindow": 32768,
           "maxTokens": 2048
         },
-        "qwen-14b": {
+        "Qwen/Qwen2-14B-Instruct": {
           "name": "Qwen 14B (vLLM)",
           "contextWindow": 32768,
           "maxTokens": 4096
         },
-        "gemma-4b": {
-          "name": "Gemma 4B (vLLM)",
+        "google/gemma-2-2b-it": {
+          "name": "Gemma 2B (vLLM)",
           "contextWindow": 8192,
           "maxTokens": 2048
         },
-        "gemma-9b": {
+        "google/gemma-2-9b-it": {
           "name": "Gemma 9B (vLLM)",
           "contextWindow": 8192,
           "maxTokens": 2048
         },
-        "deepseek-7b": {
-          "name": "DeepSeek 7B (vLLM)",
+        "deepseek-ai/deepseek-coder-6.7b-instruct": {
+          "name": "DeepSeek Coder 7B (vLLM)",
           "contextWindow": 16384,
           "maxTokens": 4096
         }

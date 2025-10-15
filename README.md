@@ -21,7 +21,7 @@
 This project provides a complete Docker-based development environment combining vLLM (high-performance LLM inference), LMCache (KV cache optimization), and OpenCode (AI coding assistant) - all optimized for NVIDIA RTX 5090 on WSL2/Windows and Linux.
 
 <div align="center">
-  <img src="assets/03.png" alt="Architecture Diagram" width="600"/>
+  <img src="assets/opencode.png" alt="Architecture Diagram" width="600"/>
   <br>
 </div>
 
@@ -70,8 +70,7 @@ bash /workspace/oc-vllm.sh
 ```
 **Start coding with AI:**
 ```bash
-opencode  --model vllm/qwen3-4b
-opencode -m vllm/qwen3-4b
+opencode -m vllm/Qwen/Qwen3-4B
 ```
 
 
