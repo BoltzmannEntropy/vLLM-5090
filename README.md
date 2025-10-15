@@ -63,12 +63,10 @@ The unique feature of this setup is **OpenCode running inside the same Docker co
 # Linux/Mac
 docker build -t lmcache-vllm:latest --target image-build -f docker/Dockerfile .
 ```
-# Windows
 .\run-d.bat
 ```bash
 bash /workspace/oc-vllm.sh
 ```
-**Start coding with AI:**
 ```bash
 opencode -m vllm/Qwen/Qwen3-4B
 ```
