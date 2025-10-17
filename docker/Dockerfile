@@ -115,7 +115,7 @@ WORKDIR /workspace
 COPY app-*.py /workspace/
 
 # Copy scripts directory for training and inference
-COPY scripts/ /workspace/scripts/
+# COPY scripts/ /workspace/scripts/
 
 # ENTRYPOINT ["vllm", "serve"]
 
@@ -136,7 +136,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     uv pip install --system -r ds-stack.txt
 
 # Copy scripts directory for training and inference
-COPY scripts/ /workspace/scripts/
+# COPY scripts/ /workspace/scripts/
 
 WORKDIR /workspace
 # ENTRYPOINT ["vllm", "serve"]
