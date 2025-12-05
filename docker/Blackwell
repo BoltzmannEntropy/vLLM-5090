@@ -1,0 +1,35 @@
+# syntax=docker/dockerfile:1.7
+# vLLM OpenAI API image + LMCache rebuilt for Blackwell
+# Tested on: CUDA 12.8, vLLM 0.11.0, LMCache 0.3.9.post2
+
+ARG BASE_IMAGE=vllm/vllm-openai:latest
+ARG NVCC_SPEC="nvidia-cuda-nvcc-cu12>=12.8,<13.0"
+ARG CUDA_ARCH_LIST="12.0+PTX"
+ARG LMCACHE_VERSION=
+
+FROM ${BASE_IMAGE} AS builder
+ARG NVCC_SPEC
+ARG CUDA_ARCH_LIST
+ARG LMCACHE_VERSION
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      build-essential python3-dev git libssl-dev zlib1g-dev ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir \
+      "cmake>=3.29" "ninja" "scikit-build-core>=0.10" \
+      "setuptools<81.0.0,>=77.0.3" "setuptools_scm>=8" \
+      "${NVCC_SPEC}"
+
+ENV TORCH_CUDA_ARCH_LIST=${CUDA_ARCH_LIST}
+RUN pip wheel --no-build-isolation --no-binary=:all: --no-deps -w /tmp \
+      "lmcache${LMCACHE_VERSION:+==${LMCACHE_VERSION}}"
+
+FROM ${BASE_IMAGE} AS runtime
+ARG CUDA_ARCH_LIST
+COPY --from=builder /tmp/lmcache-*.whl /tmp/
+RUN pip uninstall -y lmcache || true \
+ && pip install --no-cache-dir /tmp/lmcache-*.whl \
+ && rm -f /tmp/lmcache-*.whl
+
+ENV TORCH_CUDA_ARCH_LIST=${CUDA_ARCH_LIST}
